@@ -5,9 +5,13 @@ import (
 	"math"
 )
 
-func validate(x int) bool {
-	bound := int(math.Pow(2, 31))
+// save at compile time the result so we dont calculate
+// each time.
+var (
+	bound = int(math.Pow(2, 31))
+)
 
+func validate(x int) bool {
 	return x >= -bound && x <= bound
 }
 
